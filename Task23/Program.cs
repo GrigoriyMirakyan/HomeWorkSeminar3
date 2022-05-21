@@ -1,6 +1,6 @@
 ﻿/*Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.*/
 
-int GetNumber() //функция считывающая введенное число + проверка что число является числом 
+int GetNumber() //функция считывающая введенное число + проверка что число является числом
 {
     while (true)
     {
@@ -9,8 +9,10 @@ int GetNumber() //функция считывающая введенное чи�
 
         if (int.TryParse(valueFromConsole, out int number))
         {
-            return number;
-
+            if (number == 0 || number < 0)
+                Console.WriteLine("Введите число, отличное и  болшее чем ноль");
+            else
+                return number;
         }
         else
         {
@@ -19,22 +21,22 @@ int GetNumber() //функция считывающая введенное чи�
     }
 }
 
-
-
-int FillArray(int[] collection) //метод, заполняющий массив таблицей кубов от 1 до N
+void Calculation(int number)
 {
-    int number = collection.Length;
-    int index = 1;
-    if (index < number)
+    int i = 1;
+    double result;
+    while (i < number || i == number)
     {
-        collection[index] = new Math.Pow((index), 3);
-        index++;
+        result = Math.Pow(i, 3);
+        Console.Write($"{result}, ");
+        i++;
     }
-    else
-    {
-        Console.WriteLine(collection);
-    }
+
 }
-int number = GetNumber;
-FillArray(number);
+
+int number = GetNumber();
+Calculation(number);
+
+
+
 
